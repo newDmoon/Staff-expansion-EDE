@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="clientFX_db" />
+        <module name="Staff-expansion-EDE" />
       </profile>
     </annotationProcessing>
   </component>
