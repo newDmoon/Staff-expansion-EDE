@@ -2,8 +2,18 @@ package com.ede.client.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -80,10 +90,7 @@ public class TableOfEmployeeController {
         System.out.println(clickedButton.getId());
 
         switch (clickedButton.getId()) {
-            case "addButton": {
 
-            }
-            break;
             case "editButton": {
 
             }
@@ -105,7 +112,22 @@ public class TableOfEmployeeController {
         }
     }
 
+    @FXML
+    void addNewEmployee(ActionEvent actionEvent) {
+        try {
+            Stage stage=new Stage();
+            Parent rootAdmin= FXMLLoader.load(getClass().getResource("/fxml/FormForAddEmployee.fxml"));
+            stage.setTitle("Добавление нового сотрудника");
 
+            stage.setScene(new Scene(rootAdmin, 800, 600));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            stage.showAndWait();
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
+
+    }
 
 
 }
