@@ -63,10 +63,6 @@ public class TableOfDepartmentController {
         System.out.println(clickedButton.getId());
 
         switch (clickedButton.getId()) {
-//            case "addButton": {
-//
-//            }
-//            break;
 
             case "editButton": {
 
