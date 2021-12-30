@@ -17,6 +17,7 @@ public class App
         JdbcAccessUtil accessUtil = new JdbcAccessUtil();
         try(Connection connection = accessUtil.getCurrentConnection()){
             System.out.println("connection successfully");
+            Main.main(args);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -47,7 +47,7 @@ public class ConfigDb implements Config{
     @Override
     public String getUrl() {
         Properties properties = new Properties();
-        try(FileInputStream fileInputStream = new FileInputStream("D:\\Учеба\\Staff-expansion-EDE\\src\\main\\resources\\dbConfig.properties")){
+        try(FileInputStream fileInputStream = new FileInputStream("src/main/resources/dbConfig.properties")){
             properties.load(fileInputStream);
             return  properties.getProperty("db.url");
         } catch (FileNotFoundException e) {

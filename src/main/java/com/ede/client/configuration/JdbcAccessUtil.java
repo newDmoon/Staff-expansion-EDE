@@ -69,22 +69,4 @@ public class JdbcAccessUtil implements AccessDb{
         ConfigDb configDb = ConfigDb.getInstance();
         return DriverManager.getConnection(configDb.getUrl());
     }
-
-
-    /**
-     * Override method which return ResultSer of objects from database
-     * From this ResultSet we can grab data which we need
-     * @return ResultSet
-     * @exception SQLException
-     * */
-    @Override
-    public ResultSet getResultSetOfQuery(Connection connection,String sql) {
-        try {
-            Statement statement = connection.createStatement();
-            return statement.executeQuery(sql);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return null;
-    }
 }

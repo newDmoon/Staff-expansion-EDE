@@ -18,12 +18,12 @@ public interface AccessDb {
      * */
     Connection getCurrentConnection() throws SQLException;
 
-    /**
-     * Method which return ResultSet of query in database.
-     * @param connection - current connection with database
-     * @param sql - sql language query to database
-     * @return ResultSet
-     * @exception java.io.IOException
-     * */
-    ResultSet getResultSetOfQuery(Connection connection, String sql);
+//    /**
+//     * Method which return ResultSet of query in database.
+//     * @param connection - current connection with database
+//     * @param sql - sql language query to database
+//     * @return ResultSet
+//     * @exception java.io.IOException
+//     * */
+//    ResultSet getResultSetOfQuery(Connection connection, String sql);
 }
