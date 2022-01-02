@@ -66,8 +66,6 @@ public class TableOfDepartmentController {
 
         Button clickedButton = (Button) source;
 
-        System.out.println(clickedButton.getId());
-
         switch (clickedButton.getId()) {
 
             case "editButton": {

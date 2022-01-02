@@ -42,9 +42,6 @@ public class DepartmentDAO implements DAO<Department> {
                         ,resultSet.getString("information")
                         ,resultSet.getInt("Count - employee")));
             }
-            for(Department department : departmentList){
-                System.out.println(department.getCountOfEmployees());
-            }
             return departmentList;
         } catch (SQLException ex) {
             ex.printStackTrace();
