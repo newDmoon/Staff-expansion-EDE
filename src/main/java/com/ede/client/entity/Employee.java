@@ -1,6 +1,6 @@
 package com.ede.client.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Employee {
     long id; // счетчик
@@ -11,6 +11,7 @@ public class Employee {
     boolean isExperienced; // логический
     int salary; // числовой
     Department department; // связь в бд, только айди
+    long departmentID; // связь в бд, только айди
 
     public Employee(Date birthDate, String phoneNumber, String fio, String advantages, boolean isExperienced, int salary, Department department) {
         this.birthDate = birthDate;
@@ -22,6 +23,31 @@ public class Employee {
         this.department = department;
     }
 
+
+
+    public Employee(long id, Date birthDate, String phoneNumber, String fio, String advantages, boolean isExperienced, int salary, Department department) {
+        this.id = id;
+        this.birthDate = birthDate;
+        this.phoneNumber = phoneNumber;
+        this.fio = fio;
+        this.advantages = advantages;
+        this.isExperienced = isExperienced;
+        this.salary = salary;
+        this.department = department;
+    }
+
+    public Employee(long id, Date birthDate, String phoneNumber, String fio, String advantages, boolean isExperienced, int salary, long departmentID) {
+        this.id = id;
+        this.birthDate = birthDate;
+        this.phoneNumber = phoneNumber;
+        this.fio = fio;
+        this.advantages = advantages;
+        this.isExperienced = isExperienced;
+        this.salary = salary;
+        this.departmentID = departmentID;
+    }
+
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -32,8 +58,16 @@ public class Employee {
                 ", advantages='" + advantages + '\'' +
                 ", isExperienced=" + isExperienced +
                 ", salary=" + salary +
-                ", department=" + department +
+                ", department=" + departmentID +
                 '}';
+    }
+
+    public long getDepartmentID() {
+        return departmentID;
+    }
+
+    public void setDepartmentID(long departmentID) {
+        this.departmentID = departmentID;
     }
 
     public Department getDepartment() {

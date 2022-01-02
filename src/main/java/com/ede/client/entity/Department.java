@@ -14,18 +14,23 @@ public class Department {
         this.employees = employees;
     }
 
+    public Department(long id, String information, int countOfEmployees) {
+        this.id = id;
+        this.information = information;
+        this.countOfEmployees = countOfEmployees;
+    }
+
     @Override
     public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", information='" + information + '\'' +
-                ", countOfEmployees=" + countOfEmployees +
-                ", employees=" + employees +
-                '}';
+        return information;
     }
 
     public Department(ArrayList<Employee> employees) {
         this.employees = employees;
+    }
+
+    public Department(String information) {
+        this.information = information;
     }
 
     public String getInformation() {
