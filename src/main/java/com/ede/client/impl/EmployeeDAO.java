@@ -26,6 +26,7 @@ public class EmployeeDAO implements DAO<Employee> {
             preparedStatement.setInt(6,obj.getSalary());
             preparedStatement.setLong(7,obj.getDepartment().getId());
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -49,9 +50,7 @@ public class EmployeeDAO implements DAO<Employee> {
                             ,resultSet.getInt("salary")
                             ,resultSet.getLong("department")));
                 }
-                for(Employee employee : employees){
-                    System.out.println(employee);
-                }
+                statement.close();
                 return employees;
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -66,6 +65,12 @@ public class EmployeeDAO implements DAO<Employee> {
 
     @Override
     public void delete(Employee obj) {
-
+        JdbcAccessUtil accessUtil = new JdbcAccessUtil();
+        try{
+            Statement statement = accessUtil.getCurrentConnection().createStatement();
+            statement.executeUpdate("DELETE FROM employee WHERE ID = "+obj.getId());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

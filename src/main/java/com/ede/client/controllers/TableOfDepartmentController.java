@@ -76,12 +76,15 @@ public class TableOfDepartmentController {
 
             break;
             case "deleteButton": {
-
+                DepartmentDAO departmentDAO = new DepartmentDAO();
+                departmentDAO.delete(table.getSelectionModel().getSelectedItem());
+                table.getItems().remove(table.getSelectionModel().getSelectedItem());
             }
             break;
 
             case "refreshTableButton": {
-                table.refresh();
+                table.getItems().clear();
+                initTable();
             }
             break;
         }
@@ -110,7 +113,6 @@ public class TableOfDepartmentController {
         DepartmentDAO departmentDAO = new DepartmentDAO();
         List<Department> departmentList = departmentDAO.findAll();
         for (Department department : departmentList){
-            department.setCountOfEmployees(departmentDAO.getCountEmp());
             table.getItems().add(department);
         }
 

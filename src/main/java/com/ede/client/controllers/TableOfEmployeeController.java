@@ -87,32 +87,25 @@ public class TableOfEmployeeController {
 
     @FXML
     void actionButtonPressed(ActionEvent actionEvent) {
-
         Object source = actionEvent.getSource();
-
-
         Button clickedButton = (Button) source;
-
-        System.out.println(clickedButton.getId());
-
         switch (clickedButton.getId()) {
-
             case "editButton": {
 
             }
             break;
-            case "deleteButton": {
-
-            }
-            break;
-
+            case "deleteButton":
+                EmployeeDAO employeeDAO = new EmployeeDAO();
+                employeeDAO.delete(table.getSelectionModel().getSelectedItem());
+                table.getItems().remove(table.getSelectionModel().getSelectedItem());
+                break;
             case "sortButton": {
-
             }
             break;
 
             case "refreshTableButton": {
-                table.refresh();
+                table.getItems().clear();
+                initTable();
             }
             break;
         }

@@ -14,11 +14,10 @@ public class Department {
         this.employees = employees;
     }
 
-    public Department(long id, String information, int countOfEmployees, ArrayList<Employee> employees) {
+    public Department(long id, String information, int countOfEmployees) {
         this.id = id;
         this.information = information;
         this.countOfEmployees = countOfEmployees;
-        this.employees = employees;
     }
 
     @Override

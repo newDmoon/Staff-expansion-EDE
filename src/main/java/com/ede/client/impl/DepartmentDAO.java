@@ -33,13 +33,17 @@ public class DepartmentDAO implements DAO<Department> {
         JdbcAccessUtil accessUtil = new JdbcAccessUtil();
         try {
             Statement statement = accessUtil.getCurrentConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM department");
+            ResultSet resultSet = statement.executeQuery("SELECT DISTINCTROW department.ID, department.information, Count(*) AS [Count - employee] " +
+                    "FROM department INNER JOIN employee ON department.[ID] = employee.[department]" +
+                    " GROUP BY department.ID, department.information");
             List<Department> departmentList = new ArrayList<>();
             while (resultSet.next()){
                 departmentList.add(new Department(resultSet.getLong("ID")
                         ,resultSet.getString("information")
-                        ,resultSet.getInt("CountOfEmployees"),
-                        null));
+                        ,resultSet.getInt("Count - employee")));
+            }
+            for(Department department : departmentList){
+                System.out.println(department.getCountOfEmployees());
             }
             return departmentList;
         } catch (SQLException ex) {
@@ -56,22 +60,12 @@ public class DepartmentDAO implements DAO<Department> {
 
     @Override
     public void delete(Department obj) {
-
-    }
-
-    public int getCountEmp(){
         JdbcAccessUtil accessUtil = new JdbcAccessUtil();
-        try {
+        try{
             Statement statement = accessUtil.getCurrentConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM department LEFT JOIN employee ON department.employees=employee.id");
-            int count=0;
-            while (resultSet.next()){
-                count++;
-            }
-            return count;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            statement.executeUpdate("DELETE FROM department WHERE ID = "+obj.getId());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-        return 0;
     }
 }
